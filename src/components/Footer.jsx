@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 
 function Footer() {
   return (
-    <Footer
+    <footer
       style={{
         backgroundColor: "#141414",
         color: "white",
@@ -16,7 +16,7 @@ function Footer() {
           &copy; {new Date().getFullYear()} Netflix Clone. All rights reserved.
         </p>
       </Container>
-    </Footer>
+    </footer>
   );
 }
 
