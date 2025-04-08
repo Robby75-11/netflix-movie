@@ -32,7 +32,7 @@ function MovieGallery({ title, searchTerms }) {
     };
 
     fetchMovies();
-  }, [searchTerms, apiKey]);
+  }, [searchTerms, "apiKey"]);
 
   const rows = [];
   const moviesPerRow = 18; // Assumiamo che tu voglia al massimo 18 film per galleria per avere 3 righe da 6
@@ -52,7 +52,7 @@ function MovieGallery({ title, searchTerms }) {
               key={movie.imdbID}
               xs={6} // Extra small: 2 colonne (6 / 2 = 3, non ideale per 6)
               sm={4} // Small: 3 colonne (12 / 4 = 3, non ideale per 6)
-              md={2} // Medium: 6 colonne (12 / 2 = 6)
+              md={3} // Medium: 6 colonne (12 / 2 = 6)
               lg={2} // Large: 6 colonne (12 / 2 = 6)
               xl={2} // Extra large: 6 colonne (12 / 2 = 6)
               xxl={2} // Extra extra large: 6 colonne (12 / 2 = 6)

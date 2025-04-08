@@ -5,9 +5,9 @@ function Footer() {
   return (
     <footer
       style={{
-        backgroundColor: "#141414",
+        backgroundColor: "#212529",
         color: "white",
-        padding: "20px 0",
+        padding: "10px 0",
         textAlign: "center",
       }}
     >

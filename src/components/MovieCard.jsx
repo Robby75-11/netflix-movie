@@ -8,6 +8,8 @@ function MovieCard({ movie }) {
       <Card.Body>
         <Card.Title>{movie.Title}</Card.Title>
         <Card.Text>{movie.Year}</Card.Text>
+        <Card.Text>{movie.Runtime}</Card.Text>
+        <Card.Text>{movie.Genre}</Card.Text>
       </Card.Body>
     </Card>
   );
