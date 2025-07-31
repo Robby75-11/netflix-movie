@@ -14,7 +14,7 @@ function MovieGallery({ title, searchTerms }) {
       for (const term of searchTerms) {
         try {
           const response = await axios.get(
-            `http://www.omdbapi.com/?apikey=${apiKey}&t=${term}`
+            `https://www.omdbapi.com/?apikey=${apiKey}&t=${term}`
           );
           if (response.data.Response === "True") {
             allMovies.push(response.data);
@@ -45,23 +45,19 @@ function MovieGallery({ title, searchTerms }) {
   return (
     <div style={{ padding: "20px" }}>
       <h2>{title}</h2>
-      {rows.map((row, rowIndex) => (
-        <Row key={rowIndex} className="mb-3">
-          {row.map((movie) => (
-            <Col
-              key={movie.imdbID}
-              xs={6} // Extra small: 2 colonne (6 / 2 = 3, non ideale per 6)
-              sm={4} // Small: 3 colonne (12 / 4 = 3, non ideale per 6)
-              md={3} // Medium: 6 colonne (12 / 2 = 6)
-              lg={2} // Large: 6 colonne (12 / 2 = 6)
-              xl={2} // Extra large: 6 colonne (12 / 2 = 6)
-              xxl={2} // Extra extra large: 6 colonne (12 / 2 = 6)
-            >
-              <MovieCard movie={movie} />
-            </Col>
-          ))}
-        </Row>
-      ))}
+      <Row className="g-3">
+        {movies.map((movie) => (
+          <Col
+            key={movie.imdbID}
+            xs={6} // Extra small: 2 colonne (6 / 2 = 3, non ideale per 6)
+            sm={4} // Small: 3 colonne (12 / 4 = 3, non ideale per 6)
+            md={3} // Medium: 6 colonne (12 / 3 = 4, non ideale per 6)
+            lg={2} // Large: 6 colonne (12 / 2 = 6)
+          >
+            <MovieCard movie={movie} />
+          </Col>
+        ))}
+      </Row>
     </div>
   );
 }

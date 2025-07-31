@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 
 function MovieCard({ movie }) {
   return (
-    <Card style={{ width: "18rem", margin: "10px" }}>
+    <Card className="h-100">
       <Card.Img variant="top" src={movie.Poster} />
       <Card.Body>
         <Card.Title>{movie.Title}</Card.Title>

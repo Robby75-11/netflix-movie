@@ -5,6 +5,7 @@ import React from "react";
 import MovieGallery from "./components/MovieGallery";
 import Barnav from "./components/Barnav";
 import "./App.css";
+
 function App() {
   return (
     <>
@@ -51,7 +52,7 @@ function App() {
           "Shrek the Halls",
           "Shrek the Third",
           "Shrek Forever After",
-          "Shrek and the Swamp Karaoke Dance Party",
+          "Batman ",
         ]}
       />
 
