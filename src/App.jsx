@@ -1,9 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
 import Footer from "./components/Footer";
-import React from "react";
 import MovieGallery from "./components/MovieGallery";
 import Barnav from "./components/Barnav";
+
 import "./App.css";
 
 function App() {
