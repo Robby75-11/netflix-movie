@@ -32,27 +32,22 @@ function MovieGallery({ title, searchTerms }) {
     };
 
     fetchMovies();
-  }, [searchTerms, "apiKey"]);
+  }, [searchTerms]);
 
-  const rows = [];
-  const moviesPerRow = 18; // Assumiamo che tu voglia al massimo 18 film per galleria per avere 3 righe da 6
-  const visibleMovies = movies.slice(0, moviesPerRow); // Prendi solo i primi 18
-
-  for (let i = 0; i < visibleMovies.length; i += 6) {
-    rows.push(visibleMovies.slice(i, i + 6));
-  }
+  // Limitiamo a 18 film
+  const visibleMovies = movies.slice(0, 18);
 
   return (
     <div style={{ padding: "20px" }}>
       <h2>{title}</h2>
       <Row className="g-3">
-        {movies.map((movie) => (
+        {visibleMovies.map((movie) => (
           <Col
             key={movie.imdbID}
-            xs={6} // Extra small: 2 colonne (6 / 2 = 3, non ideale per 6)
-            sm={4} // Small: 3 colonne (12 / 4 = 3, non ideale per 6)
-            md={3} // Medium: 6 colonne (12 / 3 = 4, non ideale per 6)
-            lg={2} // Large: 6 colonne (12 / 2 = 6)
+            xs={12} // Mobile: 1 colonna
+            sm={6} // Tablet: 2 colonne
+            md={4} // Small desktop: 3 colonne
+            lg={2} // Large desktop: 6 colonne
           >
             <MovieCard movie={movie} />
           </Col>
