@@ -1,16 +1,14 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-icons/font/bootstrap-icons.min.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Barnav from "./components/Barnav";
 import Footer from "./components/Footer";
 import MovieGallery from "./components/MovieGallery";
-import Barnav from "./components/Barnav";
+import { useState } from "react";
 
-import "./App.css";
-
-function App() {
+// Pagina Home con tutte le gallerie
+function Home({ onAddToList, myList }) {
   return (
     <>
-      <Barnav />
-
       <MovieGallery
         title="Harry Potter Saga"
         searchTerms={[
@@ -21,9 +19,11 @@ function App() {
           "Harry Potter and the Half-Blood Prince",
           "Harry Potter and the Deathly Hallows: Part 1",
         ]}
+        onAddToList={onAddToList}
       />
+
       <MovieGallery
-        title="Lord of the Rings Saga"
+        title="Il Signore degli Anelli e Lo Hobbit"
         searchTerms={[
           "The Fellowship of the Ring",
           "The Two Towers",
@@ -32,9 +32,11 @@ function App() {
           "The Hobbit: The Desolation of Smaug",
           "The Hobbit: The Battle of the Five Armies",
         ]}
+        onAddToList={onAddToList}
       />
+
       <MovieGallery
-        title="Star Wars/ The Matrix Trilogy"
+        title="Star Wars & Matrix"
         searchTerms={[
           "The Empire Strikes Back",
           "Return of the Jedi",
@@ -43,21 +45,63 @@ function App() {
           "The Matrix Reloaded",
           "The Matrix Revolutions",
         ]}
+        onAddToList={onAddToList}
       />
       <MovieGallery
-        title="Shrek"
+        title="Shrek Saga"
         searchTerms={[
           "Shrek",
           "Shrek 2",
           "Shrek the Halls",
           "Shrek the Third",
           "Shrek Forever After",
-          "Batman ",
+          "Batman",
         ]}
+        onAddToList={onAddToList}
       />
-
-      <Footer />
+      <MovieGallery
+        title="🎬 La mia lista"
+        moviesData={myList}
+        onAddToList={onAddToList}
+      />
     </>
+  );
+}
+
+// App principale
+function App() {
+  const [myList, setMyList] = useState([]);
+
+  const handleAddToList = (movie) => {
+    if (!myList.some((m) => m.imdbID === movie.imdbID)) {
+      setMyList([...myList, movie]);
+      alert(`${movie.Title} aggiunto alla tua lista!`);
+    }
+  };
+
+  return (
+    <Router>
+      <Barnav />
+      <div style={{ marginTop: "80px" }}>
+        <Routes>
+          <Route
+            path="/"
+            element={<Home onAddToList={handleAddToList} myList={myList} />}
+          />
+          <Route
+            path="/mylist"
+            element={
+              <MovieGallery
+                title="🎬 La mia lista"
+                moviesData={myList}
+                onAddToList={handleAddToList}
+              />
+            }
+          />
+        </Routes>
+      </div>
+      <Footer />
+    </Router>
   );
 }
 
