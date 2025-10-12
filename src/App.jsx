@@ -23,19 +23,6 @@ function Home({ onAddToList, myList }) {
       />
 
       <MovieGallery
-        title="Il Signore degli Anelli e Lo Hobbit"
-        searchTerms={[
-          "The Fellowship of the Ring",
-          "The Two Towers",
-          "The Return of the King",
-          "The Hobbit: An Unexpected Journey",
-          "The Hobbit: The Desolation of Smaug",
-          "The Hobbit: The Battle of the Five Armies",
-        ]}
-        onAddToList={onAddToList}
-      />
-
-      <MovieGallery
         title="Star Wars & Matrix"
         searchTerms={[
           "The Empire Strikes Back",
@@ -68,6 +55,38 @@ function Home({ onAddToList, myList }) {
   );
 }
 
+// Pagina Serie TV Netflix
+function TvShows({ onAddToList }) {
+  return (
+    <>
+      <MovieGallery
+        title="Serie Netflix - House of Cards"
+        searchTerms={["House of Cards"]}
+        onAddToList={onAddToList}
+      />
+
+      <MovieGallery
+        title="Serie Netflix - Mindhunter ()"
+        searchTerms={["Mindhunter"]}
+        onAddToList={onAddToList}
+      />
+    </>
+  );
+}
+
+// Pagina Film Netflix
+function Movies({ onAddToList }) {
+  return (
+    <>
+      <MovieGallery
+        title="Serie Netflix - Gomorra"
+        searchTerms={["Gomorra"]}
+        onAddToList={onAddToList}
+      />
+    </>
+  );
+}
+
 // App principale
 function App() {
   const [myList, setMyList] = useState([]);
@@ -87,6 +106,14 @@ function App() {
           <Route
             path="/"
             element={<Home onAddToList={handleAddToList} myList={myList} />}
+          />
+          <Route
+            path="/tvshows"
+            element={<TvShows onAddToList={handleAddToList} />}
+          />
+          <Route
+            path="/movies"
+            element={<Movies onAddToList={handleAddToList} />}
           />
           <Route
             path="/mylist"
