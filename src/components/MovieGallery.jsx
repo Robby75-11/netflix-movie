@@ -6,7 +6,13 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import MovieCard from "./MovieCard";
 
-function MovieGallery({ title, searchTerms, onAddToList, moviesData }) {
+function MovieGallery({
+  title,
+  searchTerms,
+  onAddToList,
+  onRemoveFromList,
+  moviesData,
+}) {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const apiKey = "d02e1f58";
@@ -46,6 +52,7 @@ function MovieGallery({ title, searchTerms, onAddToList, moviesData }) {
             <MovieCard
               movie={movie}
               onAddToList={onAddToList}
+              onRemoveFromList={onRemoveFromList}
               onShowDetails={handleShowDetails}
             />
           </Col>

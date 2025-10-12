@@ -98,6 +98,10 @@ function App() {
     }
   };
 
+  const handleRemoveFromList = (movie) => {
+    setMyList(myList.filter((m) => m.imdbID !== movie.imdbID));
+  };
+
   return (
     <Router>
       <Barnav />
@@ -122,6 +126,7 @@ function App() {
                 title="🎬 La mia lista"
                 moviesData={myList}
                 onAddToList={handleAddToList}
+                onRemoveFromList={handleRemoveFromList}
               />
             }
           />

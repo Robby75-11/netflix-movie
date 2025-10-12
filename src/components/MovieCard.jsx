@@ -2,7 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-function MovieCard({ movie, onAddToList, onShowDetails }) {
+function MovieCard({ movie, onAddToList, onRemoveFromList, onShowDetails }) {
   return (
     <Card
       className="h-100 bg-dark text-light border-0 shadow-sm"
@@ -45,16 +45,32 @@ function MovieCard({ movie, onAddToList, onShowDetails }) {
           <Card.Text className="text-muted small">{movie.Year}</Card.Text>
         </div>
 
-        <Button
-          variant="danger"
-          size="sm"
-          onClick={(e) => {
-            e.stopPropagation(); // evita che il click apra anche il modal
-            onAddToList(movie);
-          }}
-        >
-          + Lista
-        </Button>
+        {onAddToList && (
+          <Button
+            variant="danger"
+            size="sm"
+            onClick={(e) => {
+              e.stopPropagation();
+              onAddToList(movie);
+            }}
+          >
+            + Lista
+          </Button>
+        )}
+
+        {onRemoveFromList && (
+          <Button
+            variant="secondary"
+            size="sm"
+            className="mt-1"
+            onClick={(e) => {
+              e.stopPropagation();
+              onRemoveFromList(movie);
+            }}
+          >
+            Delete
+          </Button>
+        )}
       </Card.Body>
     </Card>
   );
